@@ -1,0 +1,23 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "NodeAPI project to familiarize myself with concepts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryancarl7/nodeAPI.git"
+  },
+  "author": "Bryan Carl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bryancarl7/nodeAPI/issues"
+  },
+  "homepage": "https://github.com/bryancarl7/nodeAPI#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
