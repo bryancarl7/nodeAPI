@@ -9,7 +9,7 @@ of API projects in python and java, so I'm excited to try nodeJS.
 - mongoDB setup remotely through Atlas
 
 ## Setup ##
-1. Load a config file name "config.json" with your mongo creds:<br>
+1. Load a config file named "config.json" in your root directory with your mongo creds:<br>
   `{`<br>`
     "username": <un>,`<br>`
     "password": <pw>,`<br>`
