@@ -10,11 +10,11 @@ of API projects in python and java, so I'm excited to try nodeJS.
 
 ## Setup ##
 1. Load a config file name "config.json" with your mongo creds:
-  {
+  `{
     "username": <un>,
     "password": <pw>,
     "dbname": <db_name>
-  }
+  }`
 
 2. npm install
 3. npm start
