@@ -29,12 +29,12 @@ app.listen(3000, function() {
 
         app.get('/', (req, res) => {
             // render our HTML templates upon load-in
-            res.sendFile(path.join(__dirname,"/templates/index.html"));
+            res.sendFile(path.join(__dirname,"/static/index.html"));
         });
         
         app.get('/login', (req, res) => {
             // Load the login data
-            res.sendFile(path.join(__dirname,"/templates/login.html"));
+            res.sendFile(path.join(__dirname,"/static/login.html"));
         });
         
         app.post('/login', (req, res) => {
@@ -51,5 +51,5 @@ app.listen(3000, function() {
     });
 
     // if it gets here, then its up
-    console.log("Started app on localhost/3000 successfully");
+    console.log("Started app on localhost:3000 successfully");
 });
