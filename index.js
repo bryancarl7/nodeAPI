@@ -1,13 +1,15 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const Joi = require('joi'); //used for validation
 const path = require('path')
 const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
 const bodyParser= require('body-parser');
 const app = express();
+const saltRounds = 10;
 
 // Get these bad boys to configure the app
-app.use(express.static(path.join(__dirname, 'templates')));
+app.use(express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Parse config.json wiht out db info
@@ -16,6 +18,21 @@ let parsed = JSON.parse(rawdata);
 let pwd = parsed['password'];
 let un  = parsed['username'];
 let dbname = parsed['dbname'];
+
+app.get('/', (req, res) => {
+    // render our HTML templates upon load-in
+    res.sendFile(path.join(__dirname,"/static/index.html"));
+});
+
+app.get('/signup', (req, res) => {
+    // Load the login data
+    res.sendFile(path.join(__dirname,"/static/signup.html"));
+});
+
+app.get('/favicon.ico',(req, res) => {
+    // Load the login data
+    res.sendFile(path.join(__dirname,"/favicon.ico"));
+});
 
 app.listen(3000, function() {
     // Mongodb connection setup
@@ -26,24 +43,16 @@ app.listen(3000, function() {
         // Load up DB for entries
         const db = client.db('stonks');
         const users = db.collection('users');
-
-        app.get('/', (req, res) => {
-            // render our HTML templates upon load-in
-            res.sendFile(path.join(__dirname,"/static/index.html"));
-        });
         
-        app.get('/login', (req, res) => {
-            // Load the login data
-            res.sendFile(path.join(__dirname,"/static/login.html"));
-        });
-        
-        app.post('/login', (req, res) => {
+        app.post('/signup', (req, res) => {
             // render our HTML templates upon load-in
             let username = req.body.username;
-            let password = req.body.password;
-            let user = { "username" : username, "password" : password }
-            users.insertOne(user).then(res.redirect('/')).catch(error => console.error(error));
-            res.sendStatus(200);
+            bcrypt.genSalt(saltRounds, function(err, salt) {
+                bcrypt.hash(req.body.password, salt, function(err, hash) {
+                    var user = { "username" : username, "password" : hash }
+                    users.insertOne(user).then(res.sendStatus(200)).catch(error => console.error(error));
+                });
+            });
         });
 
     }).catch(error => {

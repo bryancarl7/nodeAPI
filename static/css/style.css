@@ -1,0 +1,55 @@
+body {
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+}  
+
+h2 {
+    text-align: center;  
+    color: #277582;  
+    padding: 20px;  
+}
+
+#uname {
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    position: relative;
+}  
+
+#pass {
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+    position: relative;
+}  
+
+#log {  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+    position: relative;
+} 
+
+.container {
+    width: 382px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+}
+
+label {
+    color: #08ffd1;  
+    font-size: 17px;  
+}  
