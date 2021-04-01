@@ -20,6 +20,8 @@
     "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
+    "http": "*",
+    "https": "^1.0.0",
     "joi": "^17.3.0",
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.16",
