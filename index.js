@@ -4,9 +4,15 @@ const Joi = require('joi'); //used for validation
 const path = require('path')
 const MongoClient = require('mongodb').MongoClient;
 const fs = require('fs');
-const bodyParser= require('body-parser');
+const bodyParser = require('body-parser');
+const https = require('https');
+const http = require('http');
 const app = express();
 const saltRounds = 10;
+
+// Setup http and https protocols
+//http.createServer(app).listen(80);
+//https.createServer(app).listen(443);
 
 // Get these bad boys to configure the app
 app.use(express.static(__dirname + '/static'));
@@ -34,7 +40,7 @@ app.get('/favicon.ico',(req, res) => {
     res.sendFile(path.join(__dirname,"/favicon.ico"));
 });
 
-app.listen(3000, function() {
+app.listen(3000, '172.26.0.119', function() {
     // Mongodb connection setup
     var connectionString = `mongodb+srv://${un}:${pwd}@cluster0.0iwam.mongodb.net/${dbname}?retryWrites=true&w=majority`;
     MongoClient.connect(connectionString,{
@@ -56,6 +62,7 @@ app.listen(3000, function() {
         });
 
     }).catch(error => {
+	console.log("\n\nERR: Unable to start Node server due to error:\n\n");
         console.log(error);
     });
 
