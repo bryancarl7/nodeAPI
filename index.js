@@ -30,6 +30,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,"/static/index.html"));
 });
 
+app.get('/about', (req, res) => {
+    // render our HTML templates upon load-in
+    res.sendFile(path.join(__dirname,"/static/about.html"));
+});
+
 app.get('/signup', (req, res) => {
     // Load the login data
     res.sendFile(path.join(__dirname,"/static/signup.html"));
